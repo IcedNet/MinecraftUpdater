@@ -1,11 +1,32 @@
 # MinecraftUpdater
-This is a python package to automate the updating of your Minecraft server.<br>
-It's very annoying to have to download the jar,
-ftp it over, stop the server, back up your world, etc. This automates alll that. just git clone this in the root of
-your server so there is an extra folder. Then run python3 update.py in the new folder. It will check if you have the
-latest version of Minecraft using the Mojang provided manfest URL. If your server is out of date, it will download the latest minecraft server jar from the official Mojang S3 bucket. Then using screen it will announce to the server that it is going to restart for an update, and give a 30 seconds countdown before stopping the server. Next it will then backup your world into a new folder, incase something goes wrong. It then updates the server jar and starts the server back up in a screen session so it's in the background.
+**MinecraftUpdater** is a Python script that automates the tedious process of updating your Minecraft server.
+
+Instead of manually downloading the latest server JAR, uploading it via FTP, stopping the server, backing up your world, and restarting everything — this tool handles it all in one step.
+
+ ## How to Use
+1) Navigate to the root of your Minecraft server directory and clone this repository:
+   ```bash
+   git clone https://github.com/eclair4151/MinecraftUpdater.git
+   ```
+2) cd into the new folder and run ```python3 update.py``` whenever you want to update the server <br><br>
+
+3) if you want to set up automatted updating, add this script to your cron file. the example below runs every day at 3am<br>
+   ```bash
+   crontab -e
+   0 3 * * * /usr/bin/python3 /full/path/to/update.py
+   ```
+
+When run, the script:
+- Checks for the latest Minecraft version using Mojang’s manifest API.
+- Downloads the new server JAR if an update is available.
+- Uses screen to notify players of an impending restart with a 30-second countdown.
+- Backs up your world folder into a zip archive.
+- Replaces the old server JAR with the new one.
+- Restarts the server in a detached screen session.
+ 
            
 ## Configuration
+Customize the script by editing the config variables:
 
 ### Latest vs. Snapshot
 UPDATE_TO_SNAPSHOT = \<True,False\> whether to update to the latest snapshot, or main release

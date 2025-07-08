@@ -1,4 +1,4 @@
-"""Module providing a function printing python version."""
+"""Module to automate updating minecraft server version"""
 
 import os
 import time

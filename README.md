@@ -8,7 +8,7 @@ Instead of manually downloading the latest server JAR, uploading it via FTP, sto
    ```bash
    git clone https://github.com/eclair4151/MinecraftUpdater.git
    ```
-2) cd into the new folder and run ```python3 update.py``` whenever you want to update the server <br><br>
+2) cd into the new MinecraftUpdater folder and run ```python3 update.py``` whenever you want to update the server <br><br>
 
 3) if you want to set up automatted updating, add this script to your cron file. the example below runs every day at 3am<br>
    ```bash

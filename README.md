@@ -1,5 +1,5 @@
-# MinecraftUpdater
-**MinecraftUpdater** is a Python script that automates the tedious process of updating your Java Minecraft server.
+# Minecraft Server Updater
+**MinecraftServerUpdater** is a Python script that automates the tedious process of updating your Java Minecraft server.
 
 Instead of manually downloading the latest server JAR, uploading it via FTP, stopping the server, backing up your world, and restarting everything — this tool handles it all in one step.
 

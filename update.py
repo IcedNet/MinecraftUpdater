@@ -14,7 +14,7 @@ UPDATE_TO_SNAPSHOT = False
 BACKUP_DIR = "world_backups"
 LOG_FILENAME = "auto_updater.log"
 RAM_INITIAL = "512m"
-RAM_MAX = "3g"
+RAM_MAX = "1.5g"
 
 MANIFEST_URL = "https://launchermeta.mojang.com/mc/game/version_manifest.json"
 
@@ -35,9 +35,9 @@ if os.path.exists("../minecraft_server.jar"):
     sha = hashlib.sha1()
     f = open("../minecraft_server.jar", "rb")
     sha.update(f.read())
-    cur_ver = sha.hexdigest()
+    CUR_VER = sha.hexdigest()
 else:
-    cur_ver = ""
+    CUR_VER = ""
 
 for version in data["versions"]:
     if version["id"] == minecraft_ver:
@@ -47,12 +47,12 @@ for version in data["versions"]:
 
         logging.info(
             "Your sha1 is %s. Latest version is %s with sha1 of %s",
-            cur_ver,
+            CUR_VER,
             str(minecraft_ver),
             jar_sha,
         )
 
-        if cur_ver != jar_sha:
+        if CUR_VER != jar_sha:
             logging.info("Updating server...")
             link = jar_data["downloads"]["server"]["url"]
             logging.info("Downloading .jar from %s...", link)
@@ -95,7 +95,7 @@ for version in data["versions"]:
                 + "_backup_"
                 + datetime.now().isoformat().replace(":", "-")
                 + "_sha="
-                + cur_ver,
+                + CUR_VER,
             )
             shutil.make_archive(backupPath, "zip", "../world")
 
